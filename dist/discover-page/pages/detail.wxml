@@ -1,0 +1,73 @@
+
+    <view class="container _39865e2">
+        <view class="ss-navigation _39865e2">
+            <view class="nav-user _39865e2">
+                <image class="user-ava _39865e2" src="../../assets/032.png" mode="scaleToFill"/>
+                <span class="_39865e2">不良人</span>
+            </view>
+            <view class="nav-follow _39865e2">
+                <image class="nav-follow-pic _39865e2" src="../../assets/加关注.png" mode="aspectFill"/>
+                <span class="_39865e2">加关注</span>
+            </view>
+        </view>
+        <swiper class="u-wrp-bnr _39865e2" indicator-dots="true">
+            <block class="_39865e2" wx:for="{{bnrUrl}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+                <swiper-item class="_39865e2">
+                    <image src="{{item}}" class="u-img-slide _39865e2" mode="aspectFill"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="food-card _39865e2">
+            <view class="food-detail _39865e2">
+                <image class="food-pic _39865e2" src="../../assets/032.png" mode="aspectFill"/>
+                <view class="food-text _39865e2">
+                    <view class="food-name _39865e2">红烧肉</view>
+                    <view class="food-location _39865e2">南京大学第一食堂 1号窗口</view>
+                    <view class="food-money _39865e2">¥ 10</view>
+                </view>
+            </view>
+            <image class="food-icon _39865e2" src="../../assets/传送.png" mode="aspectFill"/>
+        </view>
+        <view class="food-des _39865e2">
+            <view class="food-des-title _39865e2">
+                <view class="des-name _39865e2">红烧肉</view>
+                <view class="des-time _39865e2">05/24</view>
+            </view>
+            <view class="food-des-content _39865e2">
+                红烧肉是中华的一道经典名菜，口感肥而不腻、软糯香甜，是老少皆宜的美食。同时，红烧肉还富含胶原蛋白，是美容养颜保持肌肤弹性的好菜。当然，红烧肉味数甜，不可多吃，有高血糖和高血脂的患者慎吃。红烧肉的烹饪技巧以砂锅为主，肥瘦相间，香甜松软，入口即化。红烧肉在中国各地流传甚广，是一道著名的大众菜肴。
+            </view>
+        </view>
+        <view class="food-comment _39865e2">
+            <view class="comment-num _39865e2">共2条评论</view>
+            <block class="_39865e2" wx:for="{{commentList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                <view class="comment-line _39865e2">
+                    <image class="comment-line-image _39865e2" src="../../assets/001.jpg" mode="scaleToFill"/>
+                    <view class="comment-line-content _39865e2">
+                        <view class="comment-user _39865e2">画江湖</view>
+                        <view class="comment-content _39865e2">五花肉清洗干净，整条放入开水中灼烫30秒</view>
+                        <view class="comment-time _39865e2">05/24</view>
+                    </view>
+                    <view class="comment-like _39865e2">
+                        <image class="like-icon _39865e2" src="../../assets/点赞2.png" mode="aspectFill"/>
+                        <view class="like-num _39865e2">3</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="footer _39865e2">
+            <view class="comment-input _39865e2">
+                <image class="input-icon _39865e2" src="../../assets/写.png" mode="aspectFill"/>
+                <input placeholder="{{placeholder}}" bindinput="inputComment" placeholder-style="color: #888888;" class="_39865e2"/>
+            </view>
+            <view class="comment-star _39865e2">
+                <view class="comment-tap _39865e2">
+                    <image class="comment-icon _39865e2" src="../../assets/点赞.png" mode="aspectFill"/>
+                    <span class="comment-num _39865e2">1053</span>
+                </view>
+                <view class="comment-tap _39865e2">
+                    <image class="comment-icon _39865e2" src="../../assets/收藏.png" mode="aspectFill"/>
+                    <span class="comment-num _39865e2">15</span>
+                </view>
+            </view>
+        </view>
+    </view>

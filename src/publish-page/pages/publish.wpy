@@ -1,0 +1,188 @@
+<template>
+  <view class="container">
+    <view class="ss-navigation">
+      <view class="nav-btn nav-publish">发布</view>
+    </view>
+    <scroll-view scroll-x class="pic-container" >
+      <repeat for="{{pics}}" index="index" key="key" item="item">
+        <image class="pic-item" src="{{item}}" mode="aspectFill"></image>
+      </repeat>
+      <image class="add-item" src="../../assets/加.png" mode="aspectFill"></image>
+    </scroll-view>
+    <view class="function-line" @tap="addNav">
+      <view class="function-line-content">添加传送门</view>
+      <image class="function-line-arrow" src="../../assets/button_right.png" mode="aspectFit"></image>
+    </view>
+    <view class="food-nav">
+      <view class="food-detail">
+        <image class="food-pic" src="../../assets/032.png" mode="aspectFill"></image>
+        <view class="food-text">
+          <view class="food-name">红烧肉</view>
+          <view class="food-location">南京大学第一食堂 1号窗口</view>
+          <view class="food-money">¥ 10</view>
+        </view>
+      </view>
+      <image class="food-icon" src="../../assets/传送.png" mode="aspectFill"></image>
+    </view>
+    <input placeholder="{{placeholder1}}" @input="inputTitle" placeholder-style="color: #888888;" />
+    <textarea placeholder="{{placeholder2}}" @input="inputTitle" placeholder-style="color: #888888;" />
+    <view class="function-line" style="margin-bottom:40rpx;">
+      <view class="function-line-content" @tap="goBussiness">
+        <image class="function-line-image" src="../../assets/定位.png" mode="aspectFit"></image>
+        <span>添加地点</span>
+      </view>
+      <image class="function-line-arrow" src="../../assets/button_right.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from "wepy";
+  export default class extends wepy.page {
+    config = {
+      navigationBarTitleText: "发布",
+      enablePullDownRefresh: true
+    };
+    components = {};
+    data = {
+      pics: [
+        "../../assets/032.png",
+        "../../assets/001.jpg",
+        "../../assets/032.png",
+        "../../assets/032.png",
+        "../../assets/032.png"
+      ],
+      placeholder1: "加个标题会更多赞哦~",
+      placeholder2: "说说此刻的心情..."
+    };
+    methods = {};
+    onLoad() {}
+  }
+</script>
+
+<style lang="stylus" scoped>
+.container
+  width 100vw
+  display flex
+  align-items center
+  justify-content center
+  .ss-navigation
+    width 100%
+    height 100rpx
+    display flex
+    flex-direction row
+    justify-content flex-end
+    align-items center
+    box-shadow 0 6rpx 4rpx 0 rgba(0, 0, 0, 0.05)
+    padding 0 30rpx
+    box-sizing border-box
+    font-size 28rpx
+    position fixed
+    top 0
+    right 0
+    left 0
+    z-index 999
+    background #fff
+    .nav-btn
+      width 120rpx
+      height 60rpx
+      border-radius 20rpx
+      text-align center
+      line-height 60rpx
+      font-weight bold
+    .nav-publish
+      color #fff
+      background #E51C23
+  .pic-container
+    width 100%
+    white-space nowrap
+    margin-top 100rpx
+    display flex
+    align-items center
+    padding 40rpx
+    box-sizing border-box
+    border-bottom 1rpx solid #F4F4F4
+    .pic-item
+      display inline-block
+      box-sizing border-box
+      height 200rpx
+      width 200rpx
+      border-radius 20rpx
+      margin-right 20rpx
+    .add-item
+      height 200rpx
+      width 200rpx
+  .food-nav
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    height 160rpx
+    width 620rpx
+    padding 30rpx
+    box-shadow 0 0 6rpx 6rpx rgba(0, 0, 0, 0.05)
+    margin-top 20rpx
+    border-radius 10rpx
+    box-sizing border-box
+    .food-detail
+      display flex
+      flex-direction row
+      width 100%
+      .food-pic
+        height 80rpx
+        width 80rpx
+      .food-text
+        display flex
+        flex-direction column
+        margin-left 24rpx
+        .food-name
+          font-size 28rpx
+          font-weight bold
+        .food-location
+          font-size 24rpx
+        .food-money
+          font-size 28rpx
+          color #D81E06
+    .food-icon
+      height 40rpx
+      width 40rpx
+  input
+    width 620rpx
+    height 80rpx
+    border 1px solid #BBBBBB
+    padding 0 20rpx
+    box-sizing border-box
+    border-radius 10rpx
+    margin 40rpx 0 20rpx 0
+  textarea
+    width 620rpx
+    height 400rpx
+    border 1px solid #BBBBBB
+    padding 20rpx
+    box-sizing border-box
+    border-radius 10rpx
+    margin-bottom 20rpx
+  .function-line
+    width 620rpx
+    height 80rpx
+    padding 0 30rpx
+    display flex
+    flex-direction row
+    align-items center
+    justify-content space-between
+    border-radius 10rpx
+    border 1px solid #BBBBBB
+    box-sizing border-box
+    .function-line-content
+      font-size 30rpx
+      color #888888
+      display flex
+      align-items center
+      .function-line-image
+        width 40rpx
+        height 40rpx
+        margin-right 20rpx
+    .function-line-arrow
+      width 28rpx
+      height 28rpx
+</style>

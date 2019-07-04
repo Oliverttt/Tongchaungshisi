@@ -1,0 +1,36 @@
+
+  <view class="container _f86b5e8">
+    <view class="ss-navigation _f86b5e8">
+      <view class="nav-btn nav-publish _f86b5e8">发布</view>
+    </view>
+    <scroll-view scroll-x class="pic-container _f86b5e8">
+      <block class="_f86b5e8" wx:for="{{pics}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+        <image class="pic-item _f86b5e8" src="{{item}}" mode="aspectFill"/>
+      </block>
+      <image class="add-item _f86b5e8" src="../../assets/加.png" mode="aspectFill"/>
+    </scroll-view>
+    <view class="function-line _f86b5e8" bindtap="addNav">
+      <view class="function-line-content _f86b5e8">添加传送门</view>
+      <image class="function-line-arrow _f86b5e8" src="../../assets/button_right.png" mode="aspectFit"/>
+    </view>
+    <view class="food-nav _f86b5e8">
+      <view class="food-detail _f86b5e8">
+        <image class="food-pic _f86b5e8" src="../../assets/032.png" mode="aspectFill"/>
+        <view class="food-text _f86b5e8">
+          <view class="food-name _f86b5e8">红烧肉</view>
+          <view class="food-location _f86b5e8">南京大学第一食堂 1号窗口</view>
+          <view class="food-money _f86b5e8">¥ 10</view>
+        </view>
+      </view>
+      <image class="food-icon _f86b5e8" src="../../assets/传送.png" mode="aspectFill"/>
+    </view>
+    <input placeholder="{{placeholder1}}" bindinput="inputTitle" placeholder-style="color: #888888;" class="_f86b5e8"/>
+    <textarea placeholder="{{placeholder2}}" bindinput="inputTitle" placeholder-style="color: #888888;" class="_f86b5e8"/>
+    <view class="function-line _f86b5e8" style="margin-bottom:40rpx;">
+      <view class="function-line-content _f86b5e8" bindtap="goBussiness">
+        <image class="function-line-image _f86b5e8" src="../../assets/定位.png" mode="aspectFit"/>
+        <span class="_f86b5e8">添加地点</span>
+      </view>
+      <image class="function-line-arrow _f86b5e8" src="../../assets/button_right.png" mode="aspectFit"/>
+    </view>
+  </view>

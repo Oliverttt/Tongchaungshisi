@@ -1,0 +1,71 @@
+
+    <view class="container _d549e1e">
+        <view class="ss-navigation _d549e1e">
+            <view class="swiper-tab _d549e1e">
+                <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}} _d549e1e" data-current="0" bindtap="swichNav">摇一摇</view>
+                <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}} _d549e1e" data-current="1" bindtap="swichNav">发现</view>
+                <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}} _d549e1e" data-current="2" bindtap="swichNav">附近</view>
+            </view>
+            <input class="ss-input _d549e1e" placeholder="{{placeholder}}" bindinput="inputSearch" placeholder-style="color: rgba(155,155,155);"/>
+        </view>
+        <view style="height:200rpx;width:100%;" class="_d549e1e"/>
+        <swiper current="{{currentTab}}" class="swiper-box _d549e1e" duration="300" style="height:{{winHeight}};" bindchange="bindChange">
+            <swiper-item class="_d549e1e">
+                <image class="shake-image _d549e1e" src="../assets/0006.gif" mode="scaleToFill"/>
+                <view class="shake _d549e1e">摇一摇，随便看看周边人气美食</view>
+            </swiper-item>
+            <swiper-item class="_d549e1e">
+                <view class="food-list _d549e1e">
+                    <block class="_d549e1e" wx:for="{{foodList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                        <view class="food _d549e1e" bindtap="goDetail">
+                            <image class="food-pic _d549e1e" src="../assets/0005.gif" mode="scaleToFill">
+                            </image>
+                            <view class="food-detail _d549e1e">
+                                <view class="food-title _d549e1e">
+                                    {{item}}
+                                </view>
+                                <view class="food-info _d549e1e">
+                                    <view class="food-user _d549e1e">
+                                        <image class="user-ava _d549e1e" src="../assets/032.png" mode="scaleToFill"/>
+                                        <span class="_d549e1e">不良人</span>
+                                    </view>
+                                    <view class="food-tap _d549e1e">
+                                        <image class="tap-icon _d549e1e" src="../assets/点赞2.png" mode="scaleToFill"/>
+                                        <span class="_d549e1e">9876</span>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </swiper-item>
+            <swiper-item class="_d549e1e">
+                <view class="food-list _d549e1e">
+                    <block class="_d549e1e" wx:for="{{foodList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                        <view class="food _d549e1e">
+                            <image class="food-pic _d549e1e" src="../assets/312.jpg" mode="scaleToFill">
+                            </image>
+                            <view class="food-detail _d549e1e">
+                                <view class="food-title _d549e1e">
+                                    {{item}}
+                                </view>
+                                <view class="food-info _d549e1e">
+                                    <view class="food-user _d549e1e">
+                                        <image class="user-ava _d549e1e" src="../assets/032.png" mode="scaleToFill"/>
+                                        <span class="_d549e1e">伍六七</span>
+                                    </view>
+                                    <view class="food-tap _d549e1e">
+                                        <image class="tap-icon _d549e1e" src="../assets/定位2.png" mode="scaleToFill"/>
+                                        <span class="_d549e1e">0 m</span>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="float-btn _d549e1e" bindtap="toPublish">
+            <span class="_d549e1e">+</span>
+        </view>
+    </view>

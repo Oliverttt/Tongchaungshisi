@@ -1,0 +1,295 @@
+<template>
+    <view class="container">
+        <view class="ss-navigation">
+            <view class="swiper-tab">
+                <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" @tap="swichNav">摇一摇</view>
+                <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" @tap="swichNav">发现</view>
+                <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" @tap="swichNav">附近</view>
+            </view>
+            <input class="ss-input" placeholder="{{placeholder}}" @input="inputSearch" placeholder-style="color: rgba(155,155,155);" />
+        </view>
+        <view style="height:200rpx;width:100%;"></view>
+        <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight}};" @change="bindChange">
+            <swiper-item>
+                <image class="shake-image" src="../assets/0006.gif" mode="scaleToFill"></image>
+                <view class="shake">摇一摇，随便看看周边人气美食</view>
+            </swiper-item>
+            <swiper-item>
+                <view class="food-list">
+                    <repeat for="{{foodList}}" key="index" item="item">
+                        <view class="food" @tap="goDetail">
+                            <image class="food-pic" src="../assets/0005.gif" mode="scaleToFill">
+                            </image>
+                            <view class="food-detail">
+                                <view class="food-title">
+                                    {{item}}
+                                </view>
+                                <view class="food-info">
+                                    <view class="food-user">
+                                        <image class="user-ava" src="../assets/032.png" mode="scaleToFill"></image>
+                                        <span>不良人</span>
+                                    </view>
+                                    <view class="food-tap">
+                                        <image class="tap-icon" src="../assets/点赞2.png" mode="scaleToFill"></image>
+                                        <span>9876</span>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </repeat>
+                </view>
+            </swiper-item>
+            <swiper-item>
+                <view class="food-list">
+                    <repeat for="{{foodList}}" key="index" item="item">
+                        <view class="food">
+                            <image class="food-pic" src="../assets/312.jpg" mode="scaleToFill">
+                            </image>
+                            <view class="food-detail">
+                                <view class="food-title">
+                                    {{item}}
+                                </view>
+                                <view class="food-info">
+                                    <view class="food-user">
+                                        <image class="user-ava" src="../assets/032.png" mode="scaleToFill"></image>
+                                        <span>伍六七</span>
+                                    </view>
+                                    <view class="food-tap">
+                                        <image class="tap-icon" src="../assets/定位2.png" mode="scaleToFill"></image>
+                                        <span>0 m</span>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </repeat>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="float-btn" @tap="toPublish">
+            <span>+</span>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from "wepy";
+    export default class extends wepy.page {
+        config = {
+            navigationBarTitleText: "同窗食肆",
+            enablePullDownRefresh: true
+        };
+        components = {};
+        data = {
+            currentTab: 1,
+            foodList: [
+                "如果你不尝试，你永远不会知道南京大学一食堂麻辣香锅",
+                "麻辣香锅",
+                "如果你不尝试，你永远不会知道南京大学一食堂麻辣香锅",
+                "麻辣香锅",
+                "麻辣香锅",
+                "麻辣香锅",
+                "如果你不尝试，你永远不会知道南京大学一食堂麻辣香锅",
+                "麻辣香锅",
+                "麻辣香锅",
+            ],
+            placeholder: "麻辣香锅",
+            winHeight: '3000rpx'
+        };
+        methods = {
+            bindPicker1Change(e) {
+                this.index1 = e.detail.value
+                this.$apply();
+            },
+            bindPicker2Change(e) {
+                this.index2 = e.detail.value
+                this.$apply();
+            },
+            bindChange(e) {
+                this.currentTab = e.detail.current
+                if (e.detail.current == 0) {
+                    this.winHeight = '770rpx'
+                } else {
+                    this.winHeight = '3000rpx'
+                }
+                this.$apply();
+            },
+            swichNav(e) {
+                if (this.data.currentTab === e.target.dataset.current) {
+                    return false;
+                } else {
+                    this.currentTab = e.target.dataset.current
+                    if (e.detail.current == 0) {
+                        this.winHeight = '770rpx'
+                    } else {
+                        this.winHeight = '3000rpx'
+                    }
+                    this.$apply();
+                }
+            },
+            goDetail() {
+                wepy.navigateTo({
+                    url: `../discover-page/pages/detail`
+                });
+            },
+            inputSearch(e) {},
+            toPublish() {
+                wepy.navigateTo({
+                    url: '../publish-page/pages/publish'
+                });
+            }
+        };
+        onLoad() {
+            if (this.currentTab == 0) {
+                this.winHeight = '770rpx'
+            } else {
+                this.winHeight = '3000rpx'
+            }
+            this.$apply();
+        }
+    }
+</script>
+
+<style lang="stylus" scoped>
+.container
+  width 100vw
+  display flex
+  align-items center
+  justify-content center
+  .ss-navigation
+    width 100%
+    height 200rpx
+    box-shadow 0 6rpx 4rpx 0 rgba(0, 0, 0, 0.05)
+    display flex
+    align-items center
+    justify-content space-around
+    flex-direction column
+    background #fff
+    position fixed
+    top 0
+    right 0
+    left 0
+    z-index 999
+    .ss-input
+      width calc(100% - 60rpx)
+      height 60rpx
+      background rgba(16,16,16,0.15)
+      border-radius 40rpx
+      text-align center
+  .food-list
+    width calc(100% - 40rpx)
+    column-count 2
+    column-gap 20rpx
+    margin-top 20rpx
+    .food:first-child
+      margin-top 0
+    .food
+      width 340rpx
+      color #101010
+      box-shadow 0 0 10rpx 4rpx rgba(0, 0, 0, 0.1)
+      border-top-left-radius 10rpx
+      border-top-right-radius 10rpx
+      overflow hidden
+      break-inside avoid
+      margin-top 20rpx
+      .food-pic
+        width 340rpx
+        height 425rpx
+      .food-detail
+        width 340rpx
+        padding 14rpx
+        box-sizing border-box
+        .food-title
+          overflow hidden
+          text-overflow ellipsis
+          display -webkit-box
+          -webkit-line-clamp 2
+          -webkit-box-orient vertical
+          font-size 32rpx
+          font-weight bold
+        .food-info
+          width 100%
+          margin-top 20rpx
+          display flex
+          justify-content space-between
+          .food-user
+            display flex
+            flex-direction row
+            align-items center
+            height 40rpx
+            .user-ava
+              height 40rpx
+              width 40rpx
+              border-radius 50%
+            span
+              font-size 24rpx
+              margin-left 8rpx
+              line-height 40rpx
+          .food-tap
+            height 40rpx
+            display flex
+            flex-direction row
+            align-items center
+            .tap-icon
+              height 40rpx
+              width 40rpx
+            span
+              font-size 24rpx
+              margin-left 4rpx
+              line-height 40rpx
+.float-btn
+  height 90rpx
+  width 90rpx
+  position fixed
+  bottom 50rpx
+  right 60rpx
+  background #E51C23
+  border-radius 50%
+  span
+    font-size 80rpx
+    line-height 80rpx
+    font-weight bold
+    display flex
+    align-items center
+    justify-content center
+    color #fff
+
+.swiper-tab
+  width 100%
+  display flex
+  flex-direction row
+  justify-content space-around
+  text-align center
+  color #4E5155
+  font-weight bold
+  padding 0 40rpx
+  box-sizing border-box
+  .swiper-tab-list
+    width 150rpx
+    height 60rpx
+    font-size 32rpx
+  .on
+    font-size 36rpx
+    color #101010
+    border-bottom 2rpx solid #E51C23
+.swiper-box
+  width 100%
+  swiper-item
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+    height auto
+    .shake-image
+      height 400rpx
+      width 600rpx
+      margin-top 180rpx
+    .shake
+      height 70rpx
+      width 432rpx
+      margin-top 120rpx
+      color #888888
+      border 1px solid #BBBBBB
+      font-size 28rpx
+      line-height 70rpx
+      text-align center
+</style>

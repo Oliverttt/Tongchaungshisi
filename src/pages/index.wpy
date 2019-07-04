@@ -1,0 +1,198 @@
+<template>
+    <view class="container">
+        <view class="ss-navigation">
+            <view class="ss-location">
+                <view class="location-name">{{location}}</view>
+            </view>
+            <view class="ss-search">
+                <picker @change="bindPicker1Change" value="{{index1}}" range="{{array1}}">
+                    <view class="ss-picker">{{array1[index1]}}</view>
+                </picker>
+                <picker @change="bindPicker2Change" value="{{index2}}" range="{{array2}}">
+                    <view class="ss-picker">{{array2[index2]}}</view>
+                </picker>
+                <input class="ss-input" placeholder="{{placeholder}}" @input="inputSearch" placeholder-style="color: rgba(155,155,155);" />
+            </view>
+        </view>
+        <view style="height:200rpx;width:100%;"></view>
+        <repeat for="{{storeyList}}" key="index" item="storey">
+            <view class="storey-list">
+                <view class="storey-num">
+                    <span class="num-text">{{storeyList[index]}}</span>
+                </view>
+                <view class="shop-items">
+                    <repeat for="{{shopList}}" key="index" item="shop">
+                        <view class="shop">
+                            <image class="shop-pic" src="../assets/麻辣香锅.jpg" mode="scaleToFill" lazy-load="false">
+                            </image>
+                            <view class="shop-name">
+                                麻辣香锅
+                            </view>
+                            <view class="shop-num">
+                                {{shopList[index]}}号
+                            </view>
+                        </view>
+                    </repeat>
+                </view>
+            </view>
+        </repeat>
+        <view class="float-btn" @tap="toPublish">
+            <span>+</span>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from "wepy";
+    export default class extends wepy.page {
+        config = {
+            navigationBarTitleText: "同窗食肆",
+            enablePullDownRefresh: true
+        };
+        components = {};
+        data = {
+            storeyList: ["一楼", "二楼", "三楼"],
+            shopList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            location: "南京大学一食堂",
+            array1: [
+                "早餐",
+                "午餐",
+                "晚餐"
+            ],
+            array2: [
+                "1楼",
+                "2楼",
+                "3楼"
+            ],
+            index1: 0,
+            index2: 0,
+            placeholder: "麻辣香锅",
+            storeyNum: "1楼"
+        };
+        methods = {
+            bindPicker1Change(e) {
+                this.index1 = e.detail.value
+                this.$apply();
+            },
+            bindPicker2Change(e) {
+                this.index2 = e.detail.value
+                this.$apply();
+            },
+            inputSearch(e) {},
+            toPublish() {
+                wepy.navigateTo({
+                    url: '../publish-page/pages/publish'
+                });
+            }
+        };
+        onLoad() {}
+    }
+</script>
+
+<style lang="stylus" scoped>
+.container
+  width 100vw
+  display flex
+  align-items center
+  justify-content center
+  .ss-navigation
+    width 100%
+    box-shadow 0 6rpx 4rpx 0 rgba(0, 0, 0, 0.05)
+    display flex
+    align-items center
+    justify-content center
+    flex-direction column
+    background #fff
+    position fixed
+    top 0
+    right 0
+    left 0
+    z-index 999
+    .ss-location
+      width calc(100% - 60rpx)
+      height 100rpx
+      border-bottom 1px solid rgba(16,16,16,0.15)
+      display flex
+      align-items center
+    .ss-search
+      width calc(100% - 60rpx)
+      height 100rpx
+      display flex
+      align-items center
+      justify-content space-around
+      .ss-picker
+        width 130rpx
+        height 60rpx
+        border 1px solid #BBBBBB
+        color #101010
+        font-size 28rpx
+        border-radius 10rpx
+        text-align center
+        line-height 60rpx
+      .ss-input
+        width 380rpx
+        height 60rpx
+        background rgba(16,16,16,0.15)
+        border-radius 40rpx
+        text-align center
+  .storey-list
+    width 100%
+    display flex
+    align-items center
+    justify-content center
+    flex-direction column
+    .storey-num
+      width calc(100% - 60rpx)
+      height 78rpx
+      border-bottom 1px solid rgba(16,16,16,0.15)
+      display flex
+      flex-direction row
+      align-items center
+      .num-text
+        color #1296DB
+        font-size 32rpx
+        font-weight bold
+    .shop-items
+      width calc(100% - 30rpx)
+      padding 15rpx 0
+      display flex
+      flex-wrap wrap
+      .shop
+        height 200rpx
+        width calc(100%/4 - 34rpx)
+        margin 15rpx
+        border 1px solid #BBBBBB
+        flex-direction column
+        display flex
+        align-items center
+        justify-content center
+        .shop-pic
+          height 100rpx
+          width 100rpx
+        .shop-name
+          font-size 26rpx
+        .shop-num
+          border 1px solid #E51C23
+          height 32rpx
+          width 90rpx
+          border-radius 10rpx
+          text-align center
+          line-height 32rpx
+          color #E51C23
+.float-btn
+  height 90rpx
+  width 90rpx
+  position fixed
+  bottom 50rpx
+  right 60rpx
+  background #E51C23
+  border-radius 50%
+  span
+    font-size 80rpx
+    line-height 80rpx
+    font-weight bold
+    display flex
+    align-items center
+    justify-content center
+    color #fff
+</style>

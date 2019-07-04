@@ -1,0 +1,185 @@
+<template>
+    <view class="container">
+        <view class="info-card">
+            <view class="main-info-text">
+                <view class="main-info-account">同窗号：88888</view>
+                <view class="main-info-name">不良人</view>
+                <view class="main-info-detail">
+                    <view class="main-info-follow">
+                        <view>66</view>关注</view>
+                    <view class="main-info-fan">
+                        <view>32</view>粉丝</view>
+                </view>
+            </view>
+            <view class="main-info-pic">
+                <view class="main-info-avatar">
+                    <open-data type="userAvatarUrl"></open-data>
+                </view>
+                <image class="main-qrcode" src="../assets/二维码.png"></image>
+            </view>
+        </view>
+        <view class="function-line">
+            <image class="function-line-image" src="../assets/店铺.png" mode="aspectFit"></image>
+            <view class="function-line-content" @tap="goBussiness">
+                我是商家
+                <image class="function-line-arrow" src="../assets/button_right.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="function-line">
+            <image class="function-line-image" src="../assets/消息.png" mode="aspectFit"></image>
+            <view class="function-line-content" @tap="goMessage">
+                消息
+                <image class="function-line-arrow" src="../assets/button_right.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="function-line">
+            <image class="function-line-image" src="../assets/发送.png" mode="aspectFit"></image>
+            <view class="function-line-content" @tap="goSubmit">
+                传送
+                <image class="function-line-arrow" src="../assets/button_right.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="function-line">
+            <image class="function-line-image" src="../assets/笔记.png" mode="aspectFit"></image>
+            <view class="function-line-content" @tap="goNote">
+                笔记
+                <image class="function-line-arrow" src="../assets/button_right.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="function-line">
+            <image class="function-line-image" src="../assets/收 藏.png" mode="aspectFit"></image>
+            <view class="function-line-content" @tap="goCollect">
+                收藏
+                <image class="function-line-arrow" src="../assets/button_right.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="float-btn" @tap="toPublish">
+            <span>+</span>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from "wepy";
+    export default class extends wepy.page {
+        config = {
+            navigationBarTitleText: "我的",
+            enablePullDownRefresh: true
+        };
+        components = {};
+        data = {
+            storeyList: {},
+            shopList: {}
+        };
+        methods = {
+            toPublish() {
+                wepy.navigateTo({
+                    url: '../publish-page/pages/publish'
+                });
+            }
+        };
+        onLoad() {}
+    }
+</script>
+
+<style lang="stylus" scoped>
+.container
+  width 100vw
+  display flex
+  align-items center
+  justify-content center
+  .info-card
+    display flex
+    width 650rpx
+    height 360rpx
+    margin-bottom 60rpx
+    margin-top 30rpx
+    box-shadow 0 0 6rpx 6rpx rgba(0, 0, 0, 0.05)
+    border-radius 10rpx
+    padding 60rpx
+    box-sizing border-box
+    display flex
+    flex-direction row
+    justify-content space-between
+    .main-info-text
+      height 100%
+      display flex
+      flex-direction column
+      justify-content space-between
+      color #626D76
+      .main-info-account
+        font-size 28rpx
+      .main-info-name
+        color #101010
+        font-size 46rpx
+        font-weight bold
+      .main-info-detail
+        display flex
+        flex-direction row
+        justify-content space-between
+        text-align center
+        width 220rpx
+    .main-info-pic
+      display flex
+      height 100%
+      flex-direction column
+      justify-content space-between
+      align-items flex-end
+      .main-info-avatar
+        width 120rpx
+        height 120rpx
+        border-radius 50%
+        overflow hidden
+      .main-qrcode
+        height 36rpx
+        width 36rpx
+
+
+  .function-line
+    position relative
+    width 750rpx
+    height 80rpx
+    display flex
+    align-items center
+    .function-line-image
+      position relative
+      display inline-block
+      width 150rpx
+      height 40rpx
+      background-position center
+      background-repeat no-repeat
+      background-size contain
+    .function-line-content
+      position relative
+      display inline-block
+      font-size 32rpx
+      color #353535
+      width 600rpx
+      height 80rpx
+      line-height 80rpx
+      border-bottom 1rpx solid #F4F4F4
+      .function-line-arrow
+        position absolute
+        width 30rpx
+        height 30rpx
+        top 25rpx
+        right 25rpx
+
+
+.float-btn
+  height 90rpx
+  width 90rpx
+  position fixed
+  bottom 50rpx
+  right 60rpx
+  background #E51C23
+  border-radius 50%
+  span
+    font-size 80rpx
+    line-height 80rpx
+    font-weight bold
+    display flex
+    align-items center
+    justify-content center
+    color #fff
+</style>

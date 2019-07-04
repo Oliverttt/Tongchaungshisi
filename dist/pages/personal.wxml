@@ -1,0 +1,59 @@
+
+    <view class="container _08d6e16">
+        <view class="info-card _08d6e16">
+            <view class="main-info-text _08d6e16">
+                <view class="main-info-account _08d6e16">同窗号：88888</view>
+                <view class="main-info-name _08d6e16">不良人</view>
+                <view class="main-info-detail _08d6e16">
+                    <view class="main-info-follow _08d6e16">
+                        <view class="_08d6e16">66</view>关注</view>
+                    <view class="main-info-fan _08d6e16">
+                        <view class="_08d6e16">32</view>粉丝</view>
+                </view>
+            </view>
+            <view class="main-info-pic _08d6e16">
+                <view class="main-info-avatar _08d6e16">
+                    <open-data type="userAvatarUrl" class="_08d6e16"/>
+                </view>
+                <image class="main-qrcode _08d6e16" src="../assets/二维码.png"/>
+            </view>
+        </view>
+        <view class="function-line _08d6e16">
+            <image class="function-line-image _08d6e16" src="../assets/店铺.png" mode="aspectFit"/>
+            <view class="function-line-content _08d6e16" bindtap="goBussiness">
+                我是商家
+                <image class="function-line-arrow _08d6e16" src="../assets/button_right.png" mode="aspectFit"/>
+            </view>
+        </view>
+        <view class="function-line _08d6e16">
+            <image class="function-line-image _08d6e16" src="../assets/消息.png" mode="aspectFit"/>
+            <view class="function-line-content _08d6e16" bindtap="goMessage">
+                消息
+                <image class="function-line-arrow _08d6e16" src="../assets/button_right.png" mode="aspectFit"/>
+            </view>
+        </view>
+        <view class="function-line _08d6e16">
+            <image class="function-line-image _08d6e16" src="../assets/发送.png" mode="aspectFit"/>
+            <view class="function-line-content _08d6e16" bindtap="goSubmit">
+                传送
+                <image class="function-line-arrow _08d6e16" src="../assets/button_right.png" mode="aspectFit"/>
+            </view>
+        </view>
+        <view class="function-line _08d6e16">
+            <image class="function-line-image _08d6e16" src="../assets/笔记.png" mode="aspectFit"/>
+            <view class="function-line-content _08d6e16" bindtap="goNote">
+                笔记
+                <image class="function-line-arrow _08d6e16" src="../assets/button_right.png" mode="aspectFit"/>
+            </view>
+        </view>
+        <view class="function-line _08d6e16">
+            <image class="function-line-image _08d6e16" src="../assets/收 藏.png" mode="aspectFit"/>
+            <view class="function-line-content _08d6e16" bindtap="goCollect">
+                收藏
+                <image class="function-line-arrow _08d6e16" src="../assets/button_right.png" mode="aspectFit"/>
+            </view>
+        </view>
+        <view class="float-btn _08d6e16" bindtap="toPublish">
+            <span class="_08d6e16">+</span>
+        </view>
+    </view>

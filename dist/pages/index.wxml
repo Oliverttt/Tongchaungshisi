@@ -1,0 +1,42 @@
+
+    <view class="container _c0e7ba1">
+        <view class="ss-navigation _c0e7ba1">
+            <view class="ss-location _c0e7ba1">
+                <view class="location-name _c0e7ba1">{{location}}</view>
+            </view>
+            <view class="ss-search _c0e7ba1">
+                <picker bindchange="bindPicker1Change" value="{{index1}}" range="{{array1}}" class="_c0e7ba1">
+                    <view class="ss-picker _c0e7ba1">{{array1[index1]}}</view>
+                </picker>
+                <picker bindchange="bindPicker2Change" value="{{index2}}" range="{{array2}}" class="_c0e7ba1">
+                    <view class="ss-picker _c0e7ba1">{{array2[index2]}}</view>
+                </picker>
+                <input class="ss-input _c0e7ba1" placeholder="{{placeholder}}" bindinput="inputSearch" placeholder-style="color: rgba(155,155,155);"/>
+            </view>
+        </view>
+        <view style="height:200rpx;width:100%;" class="_c0e7ba1"/>
+        <block class="_c0e7ba1" wx:for="{{storeyList}}" wx:for-index="index" wx:for-item="storey" wx:key="index">
+            <view class="storey-list _c0e7ba1">
+                <view class="storey-num _c0e7ba1">
+                    <span class="num-text _c0e7ba1">{{storeyList[index]}}</span>
+                </view>
+                <view class="shop-items _c0e7ba1">
+                    <block class="_c0e7ba1" wx:for="{{shopList}}" wx:for-index="index" wx:for-item="shop" wx:key="index">
+                        <view class="shop _c0e7ba1">
+                            <image class="shop-pic _c0e7ba1" src="../assets/麻辣香锅.jpg" mode="scaleToFill" lazy-load="false">
+                            </image>
+                            <view class="shop-name _c0e7ba1">
+                                麻辣香锅
+                            </view>
+                            <view class="shop-num _c0e7ba1">
+                                {{shopList[index]}}号
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </block>
+        <view class="float-btn _c0e7ba1" bindtap="toPublish">
+            <span class="_c0e7ba1">+</span>
+        </view>
+    </view>
